@@ -30,3 +30,25 @@
   - [x] menu
     - [x] aliment id
     - [x] pourcentage
+- Commandes Spark utiles ()
+  - Démarrer le serveur : `php spark serve`
+  - Créer un contrôleur : `php spark make:controller NomDuController`
+  - Créer un modèle : `php spark make:model NomDuModel`
+  - Créer une migration : `php spark make:migration NomDeLaMigration`
+  - Exécuter les migrations : `php spark migrate`
+  - Créer un seeder : `php spark make:seeder NomDuSeeder`
+  - Exécuter les seeders : `php spark db:seed`
+  - Générer des clés : `php spark key:generate`
+  - Nettoyer le cache : `php spark cache:clear`
+  - Voir les routes : `php spark routes`
+
+### Consignes d'utilisation des commandes Spark
+- **Général** : Exécutez toutes les commandes depuis la racine du projet CodeIgniter. Assurez-vous que PHP est installé et que le fichier `spark` est exécutable (`chmod +x spark` si nécessaire).
+- **Démarrer le serveur** : Lance un serveur local sur `http://localhost:8080`. Utile pour tester l'application en développement.
+- **Créer un contrôleur/modèle/migration/seeder** : Remplacez "NomDu..." par le nom réel (ex. : `php spark make:controller UserController`). Les fichiers sont générés automatiquement dans les dossiers appropriés (`app/Controllers/`, etc.).
+- **Exécuter les migrations** : Applique les changements à la base de données. Configurez d'abord la base dans `app/Config/Database.php`.
+- **Exécuter les seeders** : Insère des données de test. Modifiez les seeders dans `app/Database/Seeds/` avant.
+- **Générer des clés** : Met à jour le fichier `.env` avec une nouvelle clé d'encryption pour la sécurité.
+- **Nettoyer le cache** : Supprime les fichiers en cache pour forcer le rechargement.
+- **Voir les routes** : Affiche la liste des routes définies, utile pour déboguer les URLs.
+- **Astuce** : Utilisez `php spark --help` pour voir toutes les options disponibles. 
