@@ -1,0 +1,32 @@
+# Regime Tp
+- [ ] conception base de donnees
+  - [ ] user
+    - [ ] nom
+    - [ ] email
+    - [ ] genre
+    - [ ] password
+    - [ ] role id
+    - [ ] sante id
+    - [ ] objectif
+  - [ ] role
+    - [ ] label
+  - [ ] sante
+    - [ ] user id
+    - [ ] taille 
+    - [ ] poids
+  - [ ] regime
+    - [ ] duree
+    - [ ] type
+  - [ ] type
+    - [ ] menu id
+    - [ ] sport id
+    - [ ] prix
+  - [ ] aliment
+    - [ ] libelle
+    - [ ] valeur
+  - [ ] sport
+    - [ ] libelle
+    - [ ] valeur
+  - [ ] menu
+    - [ ] aliment id
+    - [ ] pourcentage
