@@ -1,32 +1,32 @@
 # Regime Tp
-- [ ] conception base de donnees
-  - [ ] user
-    - [ ] nom
-    - [ ] email
-    - [ ] genre
-    - [ ] password
-    - [ ] role id
-    - [ ] sante id
-    - [ ] objectif
-  - [ ] role
-    - [ ] label
-  - [ ] sante
-    - [ ] user id
-    - [ ] taille 
-    - [ ] poids
-  - [ ] regime
-    - [ ] duree
-    - [ ] type
-  - [ ] type
-    - [ ] menu id
-    - [ ] sport id
-    - [ ] prix
-  - [ ] aliment
-    - [ ] libelle
-    - [ ] valeur
-  - [ ] sport
-    - [ ] libelle
-    - [ ] valeur
-  - [ ] menu
-    - [ ] aliment id
-    - [ ] pourcentage
+- [x] conception base de donnees
+  - [x] user
+    - [x] nom
+    - [x] email
+    - [x] genre
+    - [x] password
+    - [x] role id
+    - [x] sante id
+    - [x] objectif
+  - [x] role
+    - [x] label
+  - [x] sante
+    - [x] user id
+    - [x] taille 
+    - [x] poids
+  - [x] regime
+    - [x] duree
+    - [x] type
+  - [x] type
+    - [x] menu id
+    - [x] sport id
+    - [x] prix
+  - [x] aliment
+    - [x] libelle
+    - [x] valeur
+  - [x] sport
+    - [x] libelle
+    - [x] valeur
+  - [x] menu
+    - [x] aliment id
+    - [x] pourcentage
