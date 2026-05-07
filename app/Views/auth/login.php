@@ -6,10 +6,17 @@
     <title>Document</title>
 </head>
 <body>
+    <?php $flashError = session()->getFlashdata('error'); ?>
+    <?php if (!empty($flashError)) : ?>
+        <div style="color: red; margin-bottom: 15px; border: 1px solid red; padding: 10px;">
+            <?= esc($flashError) ?>
+        </div>
+    <?php endif; ?>
     <?php if (isset($erreur)) : ?>
         <div style="color: red; margin-bottom: 15px; border: 1px solid red; padding: 10px;">
-        <?= $erreur ?>
-    <?php endif;?>
+            <?= esc($erreur) ?>
+        </div>
+    <?php endif; ?>
     <form action="/login" method="post">
         <label for="email">Email :</label><br>
         <input type="email" name="email" id="email"><br>
