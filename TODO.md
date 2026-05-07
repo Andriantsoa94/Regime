@@ -35,9 +35,9 @@
   - [x] view user
     - [x] formulaire (password ,email)
     - [x] valider `/login`
-  - [ ] controller user (AuthController.php)
-    - [ ] method form (return view())
-    - [ ] function login()
+  - [x] controller user (AuthController.php)
+    - [x] method form (return view())
+    - [x] function login() return(`/login`)
   - [x] filters.php
   - [ ] Rolefilter.php
   - [ ] routes
