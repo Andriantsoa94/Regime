@@ -51,7 +51,7 @@ CREATE TABLE regime (
 );
 
 -- Table user (sans sante_id pour éviter référence circulaire)
-CREATE TABLE user (
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
