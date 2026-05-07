@@ -30,6 +30,27 @@
   - [x] menu
     - [x] aliment id
     - [x] pourcentage
+- [ ] login.php
+  - [x] model user
+  - [x] view user
+    - [x] formulaire (password ,email)
+    - [x] valider `/login`
+  - [ ] controller user (AuthController.php)
+    - [ ] method form (return view())
+    - [ ] function login()
+  - [x] filters.php
+  - [ ] Rolefilter.php
+  - [ ] routes
+    - [ ] get formulaire login
+    - [ ] post formulaire login
+- [ ] page info sante (inscription)
+  - [ ] model sante
+  - [ ] view sante
+  - [ ] controller sante
+
+
+
+****
 - Commandes Spark utiles ()
   - Démarrer le serveur : `php spark serve`
   - Créer un contrôleur : `php spark make:controller NomDuController`
