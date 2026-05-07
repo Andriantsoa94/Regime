@@ -30,7 +30,7 @@
   - [x] menu
     - [x] aliment id
     - [x] pourcentage
-- [x] login.php
+- [x] login.php (Andriantsoa)
   - [x] model user
   - [x] view user
     - [x] formulaire (password ,email)
@@ -39,14 +39,26 @@
     - [x] method form (return view())
     - [x] function login() return(`/login`)
   - [x] filters.php
-  - [x] Rolefilter.php (redirection `/home`)
+  - [x] Rolefilter.php (redirection `/home`) (pour differencier back office de l'autres)
   - [x] routes
     - [x] get formulaire login
     - [x] post formulaire login
-- [ ] page info sante
-  - [ ] model sante
-  - [ ] view sante
-  - [ ] controller sante
+- [x] page info sante
+  - [x] model sante
+  - [x] view sante
+  - [x] controller sante
+    - [x] methode
+      - [x] index
+      - [x] save
+        - [x] si !$user to (/login)
+        - [x] valeur numerique requis avec `'required|numeric'`
+        - [x] succes message
+  - [x] routes
+    - [ ] `/sante`
+      - [ ] get 
+        - [ ] index
+      - [ ] post
+        - [ ] save
 
 
 
