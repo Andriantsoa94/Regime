@@ -30,8 +30,8 @@
   - [x] menu
     - [x] aliment id
     - [x] pourcentage
-- [x] login.php (Andriantsoa)
-  - [x] model user
+- [x] login.php **(Andriantsoa)**
+  - [x] model user 
   - [x] view user
     - [x] formulaire (password ,email)
     - [x] valider `/login`
@@ -43,7 +43,7 @@
   - [x] routes
     - [x] get formulaire login
     - [x] post formulaire login
-- [x] page info sante
+- [x] page info sante **(Andriantsoa)**
   - [x] model sante
   - [x] view sante
   - [x] controller sante
@@ -54,11 +54,11 @@
         - [x] valeur numerique requis avec `'required|numeric'`
         - [x] succes message
   - [x] routes
-    - [ ] `/sante`
-      - [ ] get 
-        - [ ] index
-      - [ ] post
-        - [ ] save
+    - [x] `/sante`
+      - [x] get 
+        - [x] index
+      - [x] post
+        - [x] save
 
 
 
