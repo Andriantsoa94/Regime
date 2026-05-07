@@ -4,12 +4,6 @@
 CREATE DATABASE IF NOT EXISTS regime_tp;
 USE regime_tp;
 
--- Table role
-CREATE TABLE role (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    label VARCHAR(50) NOT NULL
-);
-
 -- Table aliment
 CREATE TABLE aliment (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,7 +51,7 @@ CREATE TABLE users (
     email VARCHAR(100) UNIQUE NOT NULL,
     genre ENUM('homme', 'femme', 'autre') NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role_id INT,
+    role VARCHAR(100),
     objectif TEXT,
     FOREIGN KEY (role_id) REFERENCES role(id)
 );
