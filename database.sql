@@ -44,14 +44,20 @@ CREATE TABLE regime (
     FOREIGN KEY (type_id) REFERENCES type(id)
 );
 
--- Table user (sans sante_id pour éviter référence circulaire)
+-- Table role
+CREATE TABLE role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    label VARCHAR(100) NOT NULL
+);
+
+-- Table users
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     genre ENUM('homme', 'femme', 'autre') NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role VARCHAR(100),
+    role_id INT,
     objectif TEXT,
     FOREIGN KEY (role_id) REFERENCES role(id)
 );
@@ -59,12 +65,8 @@ CREATE TABLE users (
 -- Table sante
 CREATE TABLE sante (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    user_id INT NOT NULL UNIQUE,
     taille FLOAT NOT NULL, -- en cm
     poids FLOAT NOT NULL, -- en kg
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
--- Ajouter la clé étrangère pour sante_id dans user
-ALTER TABLE user ADD COLUMN sante_id INT;
-ALTER TABLE user ADD FOREIGN KEY (sante_id) REFERENCES sante(id);
