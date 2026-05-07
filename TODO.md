@@ -30,7 +30,7 @@
   - [x] menu
     - [x] aliment id
     - [x] pourcentage
-- [ ] login.php
+- [x] login.php
   - [x] model user
   - [x] view user
     - [x] formulaire (password ,email)
@@ -39,11 +39,11 @@
     - [x] method form (return view())
     - [x] function login() return(`/login`)
   - [x] filters.php
-  - [ ] Rolefilter.php
-  - [ ] routes
-    - [ ] get formulaire login
-    - [ ] post formulaire login
-- [ ] page info sante (inscription)
+  - [x] Rolefilter.php (redirection `/home`)
+  - [x] routes
+    - [x] get formulaire login
+    - [x] post formulaire login
+- [ ] page info sante
   - [ ] model sante
   - [ ] view sante
   - [ ] controller sante
