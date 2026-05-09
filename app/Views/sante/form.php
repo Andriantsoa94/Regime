@@ -33,11 +33,6 @@
     <h1>Informations sante</h1>
     <form action="/sante" method="post">
         <?= csrf_field() ?>
-        <label for="genre">Genre :</label><br>
-        <input type="radio" name="genre" value="homme" id="genre_homme" <?= ($genreValue == 'homme') ? 'checked' : '' ?>> <label for="genre_homme">Homme</label><br>
-        <input type="radio" name="genre" value="femme" id="genre_femme" <?= ($genreValue == 'femme') ? 'checked' : '' ?>> <label for="genre_femme">Femme</label><br>
-        <input type="radio" name="genre" value="autre" id="genre_autre" <?= ($genreValue == 'autre') ? 'checked' : '' ?>> <label for="genre_autre">Autre</label><br>
-        <br>
 
         <label for="taille">Taille (cm) :</label><br>
         <input type="number" step="0.01" name="taille" id="taille" value="<?= esc($tailleValue) ?>"><br>
