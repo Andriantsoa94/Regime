@@ -28,6 +28,11 @@
         <label for="email">Email :</label><br>
         <input type="email" name="email" id="email" value="<?= old('email') ?>" required><br>
 
+        <label for="genre">Genre :</label><br>
+        <input type="radio" name="genre" value="homme" id="genre_homme" <?= (old('genre') == 'homme') ? 'checked' : '' ?> required> <label for="genre_homme">Homme</label><br>
+        <input type="radio" name="genre" value="femme" id="genre_femme" <?= (old('genre') == 'femme') ? 'checked' : '' ?>> <label for="genre_femme">Femme</label><br>
+        <input type="radio" name="genre" value="autre" id="genre_autre" <?= (old('genre') == 'autre') ? 'checked' : '' ?>> <label for="genre_autre">Autre</label><br>
+
         <label for="pass">Mot de passe :</label><br>
         <input type="password" name="pass" id="pass" required><br>
 
