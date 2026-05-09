@@ -51,7 +51,7 @@
       - [x] index
       - [x] save
         - [x] si !$user to (/login)
-        - [x] valeur numerique requis avec `'required|numeric'`
+        - [x] valeur numerique requis avec `required|numeric`
         - [x] succes message
   - [x] routes
     - [x] `/sante`
@@ -59,7 +59,10 @@
         - [x] index
       - [x] post
         - [x] save
-
+- [ ] Header.php
+  - [ ] inserer carte
+  - [ ] Login et inscription
+  - [ ] Nos objectifs
 
 
 ****

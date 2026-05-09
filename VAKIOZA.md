@@ -7,3 +7,5 @@ tsara zany apiana boutton login
 dia ilay page tonga dia mi redirect ao am `/home`
 
 base de donnees MySQL `app/Database/database.sql`
+
+fichier database (A configurer selon votre pc): `/home/andriantsoa/Documents/Mr_Rojo/Regime/app/Config/Database.php`
