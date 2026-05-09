@@ -84,4 +84,9 @@ class AuthController extends BaseController
             return redirect()->back()->withInput()->with('error', 'Erreur lors de l\'inscription.');
         }
     }
+
+    public function logout() {
+        session_abort();
+        return redirect()->to('/login');
+    }
 }
