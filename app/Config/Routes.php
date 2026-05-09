@@ -14,8 +14,8 @@ $routes->post('/logout', 'AuthController::logout');
 
 // -----------------routes ajoutees par Irina - aza misy manoratra ato aloha----------------------------------------------------------------
 
-$routes->get('/profile', 'Profile::index');
-$routes->post('/profile/update', 'Profile::update');
+$routes->get('/profile', 'ProfileController::index', ['filter' => 'auth']);
+$routes->post('/profile/update', 'ProfileController::update', ['filter' => 'auth']);
 
 // -----------------------------------------------------------------------------------------------------------------------
 
