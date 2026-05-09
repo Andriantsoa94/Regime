@@ -18,6 +18,7 @@
         </div>
     <?php endif; ?>
     <form action="/login" method="post">
+        <?= csrf_field() ?>
         <label for="email">Email :</label><br>
         <input type="email" name="email" id="email"><br>
         <label for="pass">Password :</label><br>
