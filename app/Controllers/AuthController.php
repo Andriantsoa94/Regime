@@ -43,8 +43,28 @@ class AuthController extends BaseController
         return redirect()->to('/home');
     }
 
-    public function logout() {
-        return redirect()->to('/login');
-        return redirect()->to('auth/login');
+    public function register()
+    {
+        return view('auth/inscription');
+    }
+
+    public function store()
+    {
+        $model = new UserModel();
+        
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'email' => $this->request->getPost('email'),
+            'genre' => $this->request->getPost('genre'),
+            'password' => password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT),
+            'role_id' => 2, // Default to User role
+            'objectif' => $this->request->getPost('objectif') ?? '',
+        ];
+
+        if ($model->insert($data)) {
+            return redirect()->to('/login')->with('success', 'Inscription réussie ! Connectez-vous.');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Erreur lors de l\'inscription.');
+        }
     }
 }
