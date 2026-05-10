@@ -52,7 +52,7 @@
             </div>
 
             <div class="form-group">
-                <label for="password">Nouveau mot de passe (laisser vide pour ne pas changer) :</label>
+                <label for="password">Nouveau mot de passe:</label>
                 <input type="password" name="password" id="password">
             </div>
 
