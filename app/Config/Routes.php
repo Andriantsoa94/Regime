@@ -17,8 +17,15 @@ $routes->post('/logout', 'AuthController::logout');
 
 // -----------------routes ajoutees par Irina - aza misy manoratra ato aloha----------------------------------------------------------------
 
+// Profile - Profil utilisateur
 $routes->get('/profile', 'ProfileController::index', ['filter' => 'auth']);
+$routes->get('/profile/edit', 'ProfileController::edit', ['filter' => 'auth']);
 $routes->post('/profile/update', 'ProfileController::update', ['filter' => 'auth']);
+$routes->get('/profile/change-password', 'ProfileController::changePassword', ['filter' => 'auth']);
+$routes->post('/profile/change-password', 'ProfileController::changePassword', ['filter' => 'auth']);
+
+// API Profile
+$routes->get('/api/profile/get', 'ProfileController::apiGetProfile', ['filter' => 'auth']);
 
 // -----------------------------------------------------------------------------------------------------------------------
 

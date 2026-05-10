@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
  * Controller Profile
  * Gère les profils utilisateurs
  */
-class Profile extends BaseController
+class ProfileController extends BaseController
 {
     protected UserModel $userModel;
     protected SanteModel $santeModel;
