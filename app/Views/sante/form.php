@@ -40,6 +40,34 @@
         <label for="poids">Poids (kg) :</label><br>
         <input type="number" step="0.01" name="poids" id="poids" value="<?= esc($poidsValue) ?>"><br>
 
+        <label>Mon objectif</label>
+            <div>
+                <div>
+                    <label>
+                        <input type="radio" name="objectif" value="reduire" required <?= old('objectif')=='reduire'?'checked':'' ?>>
+                        <div class="objectif-card">
+                            <i></i>
+                            <div style="font-size:.8rem">Perdre du poids</div>
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="radio" name="objectif" value="augmenter" <?= old('objectif')=='augmenter'?'checked':'' ?>>
+                        <div class="objectif-card">
+                            <i></i>
+                            <div style="font-size:.8rem">Prendre du poids</div>
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="radio" name="objectif" value="imc_ideal" <?= old('objectif')=='imc_ideal'?'checked':'' ?>>
+                        <div style="font-size:.8rem">IMC ideal</div>
+                    </label>
+                </div>
+            </div>
+        <button type="button" onclick="window.location.href='/inscrire'">Retour</button>
         <button type="submit">Enregistrer</button>
     </form>
 </body>
