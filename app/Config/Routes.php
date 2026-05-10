@@ -67,3 +67,5 @@ $routes->get('/regime/(:num)',          'RegimeController::detail/$1',    ['filt
 $routes->post('/regime/subscribe',      'RegimeController::subscribe',     ['filter' => 'auth']);
 $routes->get('/regime/(:num)/pdf',      'RegimeController::exportPdf/$1',  ['filter' => 'auth']);
 $routes->get('/mes-regimes',            'RegimeController::mesRegimes',    ['filter' => 'auth']);
+
+$routes->get('/dashboard',              'Home::dashboard',      ['filter' => 'auth']);
