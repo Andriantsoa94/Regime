@@ -40,7 +40,11 @@ class AuthController extends BaseController
             'role' => $role,
         ]);
 
-        return redirect()->to('/home');
+        if ($role == 1 || $role == 'admin') {
+            return redirect()->to('/admin');
+        } else {
+            return redirect()->to('/home');
+        }
     }
 
     public function register()
