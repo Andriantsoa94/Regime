@@ -202,4 +202,159 @@ class UserRegimeModel extends Model
                     ->where('user_regimes.id', $regime_user_id)
                     ->first();
     }
+
+    // ===== MÉTHODES UTILISANT LES VUES SQL =====
+
+    /**
+     * Récupérer tous les régimes d'un utilisateur via la vue complète
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Détails complets via view_user_regimes_details
+     */
+    public function getRegimesViaView($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regimes_details WHERE user_id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Récupérer les régimes actifs d'un utilisateur via la vue
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Régimes actifs et non expirés
+     */
+    public function getActiveRegimesViaView($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_active_regimes WHERE user_id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Récupérer l'historique d'un utilisateur via la vue
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Régimes terminés ou annulés
+     */
+    public function getHistoriqueViaView($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regime_history WHERE user_id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Récupérer les statistiques d'un utilisateur
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Statistiques complètes
+     */
+    public function getUserStatistics($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regime_statistics WHERE id = ?", [$user_id])->getRow('array');
+    }
+
+    /**
+     * Récupérer les régimes en cours d'expiration (7 jours)
+     * 
+     * @return array Régimes expirant bientôt de tous les utilisateurs
+     */
+    public function getExpiringRegimes()
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_expiring_regimes")->getResultArray();
+    }
+
+    /**
+     * Récupérer les régimes expirants pour un utilisateur spécifique
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Régimes expirant dans 7 jours
+     */
+    public function getUserExpiringRegimes($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_expiring_regimes WHERE user_id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Récupérer les régimes expirés (dépassant la date de fin)
+     * 
+     * @return array Tous les régimes expirés
+     */
+    public function getExpiredRegimes()
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_expired_regimes")->getResultArray();
+    }
+
+    /**
+     * Récupérer le dashboard complet d'un utilisateur
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Informations du tableau de bord personnel
+     */
+    public function getUserDashboard($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_dashboard WHERE id = ?", [$user_id])->getRow('array');
+    }
+
+    /**
+     * Récupérer les régimes populaires (les plus vendus)
+     * 
+     * @param int $limit Nombre de régimes à retourner
+     * @return array Les régimes les plus populaires
+     */
+    public function getPopularRegimes($limit = 10)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_regime_popularity LIMIT ?", [$limit])->getResultArray();
+    }
+
+    /**
+     * Récupérer les dépenses mensuelles d'un utilisateur
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Dépenses par mois/année
+     */
+    public function getUserMonthlySpendings($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_monthly_spending WHERE id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Récupérer les régimes avec informations de prix
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @return array Régimes avec détails de prix et éventuelles remises
+     */
+    public function getRegimesWithPricing($user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regimes_with_pricing WHERE user_id = ?", [$user_id])->getResultArray();
+    }
+
+    /**
+     * Comparer le prix payé avec le prix catalogue
+     * 
+     * @param int $regime_user_id ID de la liaison user_regime
+     * @return array Informations de prix et remise
+     */
+    public function getRegimePricingDetails($regime_user_id)
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regimes_with_pricing WHERE regime_user_id = ?", [$regime_user_id])->getRow('array');
+    }
+
+    /**
+     * Récupérer toutes les statistiques de régimes (pour admin)
+     * 
+     * @return array Statistiques de tous les utilisateurs
+     */
+    public function getAllStatistics()
+    {
+        $db = \Config\Database::connect();
+        return $db->query("SELECT * FROM view_user_regime_statistics ORDER BY total_regimes DESC")->getResultArray();
+    }
 }
