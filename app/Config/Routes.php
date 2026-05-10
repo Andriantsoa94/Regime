@@ -56,3 +56,14 @@ $routes->post('/admin/users/toggle-gold/(:num)',     'Admin\UsersController::tog
 
 $routes->get('/admin/parametres',                   'Admin\ParametresController::index',      ['filter' => 'admin']);
 $routes->post('/admin/parametres/update',           'Admin\ParametresController::update',     ['filter' => 'admin']);
+
+// ----------------- Routes front-office(regime et wallet) -----------------
+
+$routes->get('/wallet',                 'WalletController::index',    ['filter' => 'auth']);
+$routes->post('/wallet/recharge',       'WalletController::recharge', ['filter' => 'auth']);
+$routes->post('/wallet/gold',           'WalletController::buyGold',  ['filter' => 'auth']);
+
+$routes->get('/regime/(:num)',          'RegimeController::detail/$1',    ['filter' => 'auth']);
+$routes->post('/regime/subscribe',      'RegimeController::subscribe',     ['filter' => 'auth']);
+$routes->get('/regime/(:num)/pdf',      'RegimeController::exportPdf/$1',  ['filter' => 'auth']);
+$routes->get('/mes-regimes',            'RegimeController::mesRegimes',    ['filter' => 'auth']);
