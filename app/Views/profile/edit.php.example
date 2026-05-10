@@ -1,0 +1,291 @@
+<?php
+/**
+ * Formulaire d'édition du Profil Utilisateur
+ * app/Views/profile/edit.php
+ */
+?>
+
+<div class="container profile-edit-container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2>Éditer mon Profil</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Affichage des erreurs de validation -->
+                    <?php if (session()->getFlashdata('errors')) : ?>
+                        <div class="alert alert-danger">
+                            <strong>Erreurs de validation:</strong>
+                            <ul>
+                                <?php foreach (session()->getFlashdata('errors') as $field => $message) : ?>
+                                    <li><?= $message ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Formulaire -->
+                    <form method="POST" action="/profile/update" class="needs-validation">
+                        <?= csrf_field() ?>
+
+                        <!-- Infos personnelles -->
+                        <fieldset class="form-section">
+                            <legend class="section-title">Informations Personnelles</legend>
+
+                            <div class="form-group">
+                                <label for="nom">Nom <span class="text-danger">*</span></label>
+                                <input type="text" 
+                                       class="form-control <?= old('nom') ? 'is-valid' : '' ?>" 
+                                       id="nom" 
+                                       name="nom" 
+                                       value="<?= old('nom') ?? $user['nom'] ?? '' ?>" 
+                                       required 
+                                       minlength="2" 
+                                       maxlength="100">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="prenom" 
+                                       name="prenom" 
+                                       value="<?= old('prenom') ?? $user['prenom'] ?? '' ?>" 
+                                       minlength="2" 
+                                       maxlength="100">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email <span class="text-danger">*</span></label>
+                                <input type="email" 
+                                       class="form-control" 
+                                       id="email" 
+                                       name="email" 
+                                       value="<?= old('email') ?? $user['email'] ?? '' ?>" 
+                                       required 
+                                       maxlength="100">
+                                <small class="form-text text-muted">Doit être unique</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="genre">Genre <span class="text-danger">*</span></label>
+                                <select class="form-control" id="genre" name="genre" required>
+                                    <option value="">-- Sélectionner --</option>
+                                    <option value="homme" <?= (old('genre') ?? $user['genre']) === 'homme' ? 'selected' : '' ?>>
+                                        Homme
+                                    </option>
+                                    <option value="femme" <?= (old('genre') ?? $user['genre']) === 'femme' ? 'selected' : '' ?>>
+                                        Femme
+                                    </option>
+                                    <option value="autre" <?= (old('genre') ?? $user['genre']) === 'autre' ? 'selected' : '' ?>>
+                                        Autre
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date_naissance">Date de naissance</label>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="date_naissance" 
+                                       name="date_naissance" 
+                                       value="<?= old('date_naissance') ?? $user['date_naissance'] ?? '' ?>">
+                                <small class="form-text text-muted">Format: YYYY-MM-DD</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="objectif">Objectif</label>
+                                <textarea class="form-control" 
+                                          id="objectif" 
+                                          name="objectif" 
+                                          rows="3" 
+                                          maxlength="500"><?= old('objectif') ?? $user['objectif'] ?? '' ?></textarea>
+                                <small class="form-text text-muted">Max 500 caractères</small>
+                            </div>
+                        </fieldset>
+
+                        <hr>
+
+                        <!-- Données de santé -->
+                        <fieldset class="form-section">
+                            <legend class="section-title">Données de Santé</legend>
+
+                            <div class="form-group">
+                                <label for="taille">Taille (cm)</label>
+                                <input type="number" 
+                                       class="form-control" 
+                                       id="taille" 
+                                       name="taille" 
+                                       step="0.1" 
+                                       min="50" 
+                                       max="300"
+                                       value="<?= old('taille') ?? $sante['taille'] ?? '' ?>"
+                                       placeholder="Ex: 180">
+                                <small class="form-text text-muted">Entre 50 et 300 cm</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="poids">Poids (kg)</label>
+                                <input type="number" 
+                                       class="form-control" 
+                                       id="poids" 
+                                       name="poids" 
+                                       step="0.1" 
+                                       min="20" 
+                                       max="300"
+                                       value="<?= old('poids') ?? $sante['poids'] ?? '' ?>"
+                                       placeholder="Ex: 75">
+                                <small class="form-text text-muted">Entre 20 et 300 kg</small>
+                            </div>
+
+                            <!-- IMC Preview (optional, avec JavaScript) -->
+                            <div class="form-group">
+                                <label>IMC Estimé</label>
+                                <div id="imc-preview" class="alert alert-info">
+                                    Remplissez la taille et le poids pour voir votre IMC estimé
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <hr>
+
+                        <!-- Boutons d'action -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save"></i> Sauvegarder les modifications
+                            </button>
+                            <a href="/profile" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times"></i> Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-edit-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.form-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    display: block;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group label .text-danger {
+    margin-left: 3px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.needs-validation {
+    padding: 0;
+}
+
+.alert ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.alert li {
+    margin-bottom: 5px;
+}
+
+/* IMC Preview Styling */
+#imc-preview {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.imc-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.imc-category {
+    margin-top: 10px;
+    font-size: 14px;
+}
+</style>
+
+<script>
+// Calcul dynamique de l'IMC
+document.addEventListener('DOMContentLoaded', function() {
+    const tailleInput = document.getElementById('taille');
+    const poidsInput = document.getElementById('poids');
+    const imcPreview = document.getElementById('imc-preview');
+
+    function calculateIMC() {
+        const taille = parseFloat(tailleInput.value);
+        const poids = parseFloat(poidsInput.value);
+
+        if (!taille || !poids || taille <= 0 || poids <= 0) {
+            imcPreview.innerHTML = 'Remplissez la taille et le poids pour voir votre IMC estimé';
+            return;
+        }
+
+        const tailleMetre = taille / 100;
+        const imc = (poids / (tailleMetre * tailleMetre)).toFixed(2);
+
+        let category = '';
+        if (imc < 18.5) category = 'Poids insuffisant';
+        else if (imc < 25) category = 'Poids normal';
+        else if (imc < 30) category = 'Surpoids';
+        else if (imc < 35) category = 'Obésité classe 1';
+        else if (imc < 40) category = 'Obésité classe 2';
+        else category = 'Obésité classe 3';
+
+        imcPreview.innerHTML = `
+            <div class="imc-value">${imc}</div>
+            <div class="imc-category">${category}</div>
+        `;
+    }
+
+    tailleInput.addEventListener('input', calculateIMC);
+    poidsInput.addEventListener('input', calculateIMC);
+
+    // Calcul initial
+    calculateIMC();
+});
+</script>
