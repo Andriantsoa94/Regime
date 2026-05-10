@@ -8,4 +8,13 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
+
+    public function admin(): string
+    {
+        $user = session()->get('user');
+        if (!$user || ($user['role'] != 1 && $user['role'] != 'admin')) {
+            return redirect()->to('/home');
+        }
+        return view('admin/dashboard');
+    }
 }
