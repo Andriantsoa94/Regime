@@ -4,13 +4,10 @@ use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
 
-// ============================
-// ROUTES PUBLIQUES
-// ============================
+
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
 
-// Auth utilisateur
 $routes->get('/login',          'AuthController::index');
 $routes->post('/login',         'AuthController::login');
 $routes->post('/logout',        'AuthController::logout');
@@ -19,14 +16,10 @@ $routes->post('/register',      'RegisterController::doStep1');
 $routes->get('/register/step2', 'RegisterController::step2');
 $routes->post('/register/step2','RegisterController::doStep2');
 
-// Admin auth (public)
 $routes->get('/admin/login',    'Admin\AuthController::index');
 $routes->post('/admin/login',   'Admin\AuthController::login');
 $routes->get('/admin/logout',   'Admin\AuthController::logout');
 
-// ============================
-// ROUTES FRONT OFFICE (filtre auth)
-// ============================
 $routes->get('/dashboard',              'Home::dashboard',      ['filter' => 'auth']);
 $routes->post('/dashboard/objectif',    'Home::setObjectif',    ['filter' => 'auth']);
 
@@ -45,9 +38,6 @@ $routes->post('/regime/subscribe',      'RegimeController::subscribe',     ['fil
 $routes->get('/regime/(:num)/pdf',      'RegimeController::exportPdf/$1',  ['filter' => 'auth']);
 $routes->get('/mes-regimes',            'RegimeController::mesRegimes',    ['filter' => 'auth']);
 
-// ============================
-// ROUTES ADMIN (filtre admin)
-// ============================
 $routes->get('/admin',                              'Admin\DashboardController::index',       ['filter' => 'admin']);
 $routes->get('/admin/dashboard',                    'Admin\DashboardController::index',       ['filter' => 'admin']);
 

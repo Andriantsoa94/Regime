@@ -65,11 +65,6 @@
                     Pas encore de compte ?
                     <a href="/register" class="fw-bold" style="color:#6f2da8">S'inscrire</a>
                 </div>
-                <div class="text-center mt-2">
-                    <a href="/admin/login" class="text-muted small">
-                        <i class="bi bi-shield-lock me-1"></i>Accès Administration
-                    </a>
-                </div>
             </div>
         </div>
     </div>
