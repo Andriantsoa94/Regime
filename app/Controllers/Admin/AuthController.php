@@ -13,7 +13,7 @@ class AuthController extends BaseController
         if ($user && in_array($user['role'] ?? '', ['admin']) || ($user['role_id'] ?? 0) == 1) {
             return redirect()->to('/admin/dashboard');
         }
-        return view('admin/login', ['title' => 'Administration - Connexion']);
+        return view('front/accueil', ['title' => 'Administration - Connexion']);
     }
 
     public function login()
@@ -47,6 +47,6 @@ class AuthController extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/admin/login');
+        return redirect()->to('front/accueil');
     }
 }
