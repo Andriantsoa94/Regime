@@ -22,7 +22,7 @@
         <div class="col-md-7 col-lg-5">
             <div class="card auth-card p-4">
                 <div class="text-center mb-3">
-                    <div style="font-size:1.8rem;font-weight:800;color:#6f2da8"><i class="bi bi-heart-pulse-fill me-1"></i>NutriPlan</div>
+                    <div style="font-size:1.8rem;font-weight:800;color:#6f2da8"><i class="bi bi-heart-pulse-fill me-1"></i>Rezime</div>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center gap-2 mb-4">

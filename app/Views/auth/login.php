@@ -21,7 +21,7 @@
             <div class="card auth-card p-4">
                 <div class="text-center mb-4">
                     <div style="font-size:2rem;font-weight:800;color:#6f2da8">
-                        <i class="bi bi-heart-pulse-fill me-1"></i>NutriPlan
+                        <i class="bi bi-heart-pulse-fill me-1"></i>Rezime
                     </div>
                     <p class="text-muted small mt-1">Votre espace nutrition personnalisé</p>
                 </div>
