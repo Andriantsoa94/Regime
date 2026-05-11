@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsy aiko – Votre guide nutrition personnalisé</title>
+    <title>NutriPlan – Votre guide nutrition personnalisé</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -101,7 +101,7 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <i class="bi bi-heart-pulse-fill me-1"></i>Tsy aiko
+            <i class="bi bi-heart-pulse-fill me-1"></i>NutriPlan
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
@@ -132,7 +132,7 @@
                     <span style="color:#d4a8ff">votre objectif.</span>
                 </h1>
                 <p class="hero-sub mb-4">
-                    Tsy aiko vous accompagne avec des programmes alimentaires adaptés à votre corps, votre mode de vie et vos objectifs de santé.
+                    NutriPlan vous accompagne avec des programmes alimentaires adaptés à votre corps, votre mode de vie et vos objectifs de santé.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="/register" class="btn btn-light fw-bold px-4 py-2" style="border-radius:10px;color:var(--purple)">
@@ -150,28 +150,28 @@
                 <div class="row g-3 mt-n5">
                     <div class="col-6">
                         <div class="card p-3 text-start" style="border-radius:16px;border:none;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);">
-                        
+                            <div style="font-size:1.5rem">🥗</div>
                             <div class="fw-bold text-white mt-1">Régimes sur mesure</div>
                             <div style="font-size:.8rem;opacity:.8">Adaptés à votre objectif</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="card p-3 text-start mt-4" style="border-radius:16px;border:none;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);">
-                            
+                            <div style="font-size:1.5rem">📊</div>
                             <div class="fw-bold text-white mt-1">Suivi IMC</div>
                             <div style="font-size:.8rem;opacity:.8">Votre santé en chiffres</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="card p-3 text-start" style="border-radius:16px;border:none;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);">
-                            
+                            <div style="font-size:1.5rem">🏃</div>
                             <div class="fw-bold text-white mt-1">Activités physiques</div>
                             <div style="font-size:.8rem;opacity:.8">Complémentaires au régime</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="card p-3 text-start mt-4" style="border-radius:16px;border:none;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);">
-                            
+                            <div style="font-size:1.5rem">⭐</div>
                             <div class="fw-bold text-white mt-1">Statut Gold</div>
                             <div style="font-size:.8rem;opacity:.8">Accès premium illimité</div>
                         </div>
@@ -287,12 +287,12 @@
         <div class="row align-items-center">
             <div class="col-md-6 mb-3 mb-md-0">
                 <div class="fw-bold text-white mb-1" style="font-size:1.2rem">
-                    <i class="bi bi-heart-pulse-fill me-1" style="color:#9b59d0"></i>Tsy aiko
+                    <i class="bi bi-heart-pulse-fill me-1" style="color:#9b59d0"></i>NutriPlan
                 </div>
                 <small>Votre espace nutrition personnalisé</small>
             </div>
             <div class="col-md-6 text-md-end">
-                <small>&copy; <?= date('Y') ?> Tsy aiko. Tous droits réservés.</small>
+                <small>&copy; <?= date('Y') ?> NutriPlan. Tous droits réservés.</small>
             </div>
         </div>
     </div>
