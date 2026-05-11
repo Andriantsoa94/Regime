@@ -4,44 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infos sante</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <?php $success = session()->getFlashdata('success'); ?>
-    <?php if (!empty($success)) : ?>
-        <div style="color: green; margin-bottom: 15px; border: 1px solid green; padding: 10px;">
-            <?= esc($success) ?>
-        </div>
-    <?php endif; ?>
+    <div class="container">
+        <h1>Informations sante</h1>
+        <?php $success = session()->getFlashdata('success'); ?>
+        <?php if (!empty($success)) : ?>
+            <div class="alert success">
+                <?= esc($success) ?>
+            </div>
+        <?php endif; ?>
 
-    <?php $errors = session('errors') ?? []; ?>
-    <?php if (!empty($errors)) : ?>
-        <div style="color: red; margin-bottom: 15px; border: 1px solid red; padding: 10px;">
-            <ul>
-                <?php foreach ($errors as $message) : ?>
-                    <li><?= esc($message) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+        <?php $errors = session('errors') ?? []; ?>
+        <?php if (!empty($errors)) : ?>
+            <div class="alert error">
+                <ul>
+                    <?php foreach ($errors as $message) : ?>
+                        <li><?= esc($message) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-    <?php
-        $genreValue = old('genre') ?? ($user['genre'] ?? '');
-        $tailleValue = old('taille') ?? ($sante['taille'] ?? '');
-        $poidsValue = old('poids') ?? ($sante['poids'] ?? '');
-    ?>
+        <?php
+            $genreValue = old('genre') ?? ($user['genre'] ?? '');
+            $tailleValue = old('taille') ?? ($sante['taille'] ?? '');
+            $poidsValue = old('poids') ?? ($sante['poids'] ?? '');
+        ?>
 
-    <h1>Informations sante</h1>
-    <form action="/sante" method="post">
-        <?= csrf_field() ?>
+        <form action="/sante" method="post">
+            <?= csrf_field() ?>
 
-        <label for="taille">Taille (cm) :</label><br>
-        <input type="number" step="0.01" name="taille" id="taille" value="<?= esc($tailleValue) ?>"><br>
+            <label for="taille">Taille (cm) :</label>
+            <input type="number" step="0.01" name="taille" id="taille" value="<?= esc($tailleValue) ?>">
 
-        <label for="poids">Poids (kg) :</label><br>
-        <input type="number" step="0.01" name="poids" id="poids" value="<?= esc($poidsValue) ?>"><br>
+            <label for="poids">Poids (kg) :</label>
+            <input type="number" step="0.01" name="poids" id="poids" value="<?= esc($poidsValue) ?>">
 
-        <label>Mon objectif</label>
-            <div>
+            <div class="objectif-group">
+                <label>Mon objectif</label>
                 <div>
                     <label>
                         <input type="radio" name="objectif" value="reduire" required <?= old('objectif')=='reduire'?'checked':'' ?>>
@@ -67,8 +69,13 @@
                     </label>
                 </div>
             </div>
-        <button type="button" onclick="window.location.href='/inscrire'">Retour</button>
-        <button type="submit">Enregistrer</button>
-    </form>
+
+            <div class="buttons">
+                
+                <a href='/inscription'>Retour</a>
+                <button type="submit">Acceder au sites</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
