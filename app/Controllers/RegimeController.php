@@ -109,7 +109,7 @@ class RegimeController extends BaseController
         if (!$sub) {
             return redirect()->back()->with('error', 'Régime introuvable.');
         }
-        // Fill missing keys so the PDF generation code below works unchanged
+
         $sub['date_debut']  = date('Y-m-d');
         $sub['date_fin']    = date('Y-m-d', strtotime('+30 days'));
         $sub['duree_jours'] = 30;
@@ -128,31 +128,32 @@ class RegimeController extends BaseController
             $imcCat = $this->imcCategorie($imc);
         }
 
-        // Use FPDF (already in project at fpdf186/)
         require_once ROOTPATH . 'fpdf186/fpdf.php';
 
         $pdf = new \FPDF();
         $pdf->AddPage();
+
+        // --- HEADER ---
         $pdf->SetFont('Helvetica', 'B', 18);
-        $pdf->SetFillColor(111, 45, 168);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetFillColor(230, 230, 230); // Modifié : Gris très clair au lieu du violet
+        $pdf->SetTextColor(0, 0, 0);       // Modifié : Noir au lieu du blanc
         $pdf->Cell(0, 14, 'Plan de Regime Alimentaire', 0, 1, 'C', true);
 
         $pdf->SetFont('Helvetica', '', 9);
-        $pdf->SetTextColor(150, 150, 150);
-        $pdf->Cell(0, 6, 'NutriPlan - Projet S4 ITU - Genere le ' . date('d/m/Y'), 0, 1, 'C');
+        $pdf->SetTextColor(100, 100, 100); // Modifié : Gris standard
+        $pdf->Cell(0, 6, 'Rezim');
         $pdf->Ln(4);
 
-        // Patient info
+        // --- PATIENT INFO ---
         $pdf->SetFont('Helvetica', 'B', 12);
-        $pdf->SetTextColor(111, 45, 168);
+        $pdf->SetTextColor(0, 0, 0);       // Modifié : Noir
         $pdf->Cell(0, 8, 'Informations du patient', 0, 1);
-        $pdf->SetDrawColor(111, 45, 168);
+        $pdf->SetDrawColor(0, 0, 0);       // Modifié : Ligne noire
         $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
         $pdf->Ln(2);
 
         $pdf->SetFont('Helvetica', '', 10);
-        $pdf->SetTextColor(50, 50, 50);
+        $pdf->SetTextColor(0, 0, 0);       // Modifié : Noir
         $prenom = $user['prenom'] ?? '';
         $pdf->Cell(95, 7, 'Nom : ' . $prenom . ' ' . $user['nom'], 1, 0, 'L', false);
         $pdf->Cell(95, 7, 'Genre : ' . ucfirst($user['genre']), 1, 1, 'L', false);
@@ -167,15 +168,14 @@ class RegimeController extends BaseController
         }
         $pdf->Ln(4);
 
-        // Regime info
+        // --- REGIME INFO ---
         $pdf->SetFont('Helvetica', 'B', 12);
-        $pdf->SetTextColor(111, 45, 168);
+        $pdf->SetTextColor(0, 0, 0);       // Modifié : Noir
         $pdf->Cell(0, 8, 'Regime : ' . $sub['regime_nom'], 0, 1);
         $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
         $pdf->Ln(2);
 
         $pdf->SetFont('Helvetica', '', 10);
-        $pdf->SetTextColor(50, 50, 50);
         $pdf->Cell(63, 7, 'Debut : ' . date('d/m/Y', strtotime($sub['date_debut'])), 1, 0);
         $pdf->Cell(63, 7, 'Fin : ' . date('d/m/Y', strtotime($sub['date_fin'])), 1, 0);
         $pdf->Cell(64, 7, 'Duree : ' . $sub['duree_jours'] . ' jours', 1, 1);
@@ -183,41 +183,37 @@ class RegimeController extends BaseController
         $pdf->Cell(95, 7, 'Variation : ' . $sub['variation_min'] . ' / +' . $sub['variation_max'] . ' kg', 1, 1);
         $pdf->Ln(4);
 
-        // Composition
+        // --- COMPOSITION TABLE ---
         $pdf->SetFont('Helvetica', 'B', 12);
-        $pdf->SetTextColor(111, 45, 168);
         $pdf->Cell(0, 8, 'Composition alimentaire', 0, 1);
         $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
         $pdf->Ln(2);
 
         $pdf->SetFont('Helvetica', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
-        $pdf->SetFillColor(80, 80, 80);
+        $pdf->SetTextColor(0, 0, 0);       // Modifié : Noir
+        $pdf->SetFillColor(240, 240, 240); // Modifié : Gris très clair pour l'entête
         $pdf->Cell(47, 7, 'Viande', 1, 0, 'C', true);
         $pdf->Cell(47, 7, 'Poisson', 1, 0, 'C', true);
         $pdf->Cell(47, 7, 'Volaille', 1, 0, 'C', true);
         $pdf->Cell(49, 7, 'Legumes/Autres', 1, 1, 'C', true);
 
         $pdf->SetFont('Helvetica', 'B', 12);
-        $pdf->SetTextColor(50, 50, 50);
-        $pdf->SetFillColor(240, 240, 240);
+        $pdf->SetFillColor(255, 255, 255); // Modifié : Blanc pour les données
         $pdf->Cell(47, 10, $sub['pct_viande'] . '%', 1, 0, 'C', true);
         $pdf->Cell(47, 10, $sub['pct_poisson'] . '%', 1, 0, 'C', true);
         $pdf->Cell(47, 10, $sub['pct_volaille'] . '%', 1, 0, 'C', true);
         $pdf->Cell(49, 10, $sub['pct_legumes'] . '%', 1, 1, 'C', true);
         $pdf->Ln(4);
 
-        // Activites
+        // --- ACTIVITES TABLE ---
         if (!empty($activites)) {
             $pdf->SetFont('Helvetica', 'B', 12);
-            $pdf->SetTextColor(111, 45, 168);
             $pdf->Cell(0, 8, 'Activites sportives recommandees', 0, 1);
             $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
             $pdf->Ln(2);
 
             $pdf->SetFont('Helvetica', 'B', 9);
-            $pdf->SetTextColor(255, 255, 255);
-            $pdf->SetFillColor(80, 80, 80);
+            $pdf->SetFillColor(240, 240, 240); // Modifié : Gris très clair
             $pdf->Cell(60, 7, 'Activite', 1, 0, 'C', true);
             $pdf->Cell(30, 7, 'Intensite', 1, 0, 'C', true);
             $pdf->Cell(32, 7, 'Duree/seance', 1, 0, 'C', true);
@@ -225,7 +221,6 @@ class RegimeController extends BaseController
             $pdf->Cell(36, 7, 'Cal/heure', 1, 1, 'C', true);
 
             $pdf->SetFont('Helvetica', '', 9);
-            $pdf->SetTextColor(50, 50, 50);
             foreach ($activites as $a) {
                 $pdf->Cell(60, 6, $a['nom'], 1, 0);
                 $pdf->Cell(30, 6, ucfirst($a['intensite']), 1, 0, 'C');
@@ -235,11 +230,11 @@ class RegimeController extends BaseController
             }
         }
 
-        // Footer
+        // --- FOOTER ---
         $pdf->Ln(8);
         $pdf->SetFont('Helvetica', 'I', 8);
         $pdf->SetTextColor(150, 150, 150);
-        $pdf->Cell(0, 5, 'NutriPlan - Projet S4 ITU - ' . date('d/m/Y H:i'), 0, 0, 'C');
+        $pdf->Cell(0, 5, 'Rezim');
 
         $pdf->Output('D', 'plan-regime-' . preg_replace('/[^a-z0-9]/i', '-', $sub['regime_nom']) . '.pdf');
         exit;

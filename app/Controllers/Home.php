@@ -14,7 +14,7 @@ class Home extends BaseController
         if (session()->get('user')) {
             return redirect()->to('/dashboard');
         }
-        return view('front/accueil', ['title' => 'NutriPlan – Votre guide nutrition personnalisé']);
+        return view('front/accueil', ['title' => 'Rezim']);
     }
 
     public function dashboard()

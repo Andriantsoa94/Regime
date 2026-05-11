@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription Étape 1 | NutriPlan</title>
+    <title>Inscription Étape 1 | Rezim</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -19,7 +19,7 @@
         <div class="col-md-7 col-lg-5">
             <div class="card auth-card p-4">
                 <div class="text-center mb-3">
-                    <div style="font-size:1.8rem;font-weight:800;color:#6f2da8"><i class="bi bi-heart-pulse-fill me-1"></i>Rezime</div>
+                    <div style="font-size:1.8rem;font-weight:800;color:#6f2da8"><i class="bi bi-heart-pulse-fill me-1"></i>Rezim</div>
                     <p class="text-muted small">Créez votre compte</p>
                 </div>
 

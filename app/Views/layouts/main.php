@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title ?? 'NutriPlan') ?> | NutriPlan</title>
+    <title><?= esc($title ?? 'Rezim') ?> | Rezim</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
 <nav class="navbar navbar-expand-lg mb-4">
     <div class="container">
         <a class="navbar-brand" href="/dashboard">
-            <i class="bi bi-heart-pulse-fill me-1" style="color:var(--primary)"></i>NutriPlan
+            <i class="bi bi-heart-pulse-fill me-1" style="color:var(--primary)"></i>Rezim
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
             <span class="navbar-toggler-icon"></span>
@@ -85,7 +85,7 @@
     <?= $this->renderSection('content') ?>
 </div>
 
-<footer>&copy; <?= date('Y') ?> NutriPlan &mdash; Projet S4 ITU</footer>
+<footer>&copy; <?= date('Y') ?> Rezim &mdash; ETU003885 ETU003940 ETU004320</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <?= $this->renderSection('scripts') ?>
