@@ -8,6 +8,7 @@ use App\Models\RegimeModel;
 use App\Models\RegimePrixModel;
 use App\Models\ActivityModel;
 use App\Models\UserRegimeModel;
+use CodeIgniter\Entity\Cast\BooleanCast;
 
 class RegimeController extends BaseController
 {
@@ -92,12 +93,16 @@ class RegimeController extends BaseController
         ]);
     }
 
+
     public function exportPdf(int $regimeId)
     {
         $userId     = session()->get('user')['id'];
         $userModel  = new UserModel();
         $santeModel = new SanteModel();
         $actModel   = new ActivityModel();
+        if(!$this->isNividy($userId,$regimeId)){
+            return redirect()->back()->with('error', 'Vous n\'êtes pas abonné à ce régime.');
+        }
 
         $db  = \Config\Database::connect();
         $sub = $db->query(
@@ -238,6 +243,15 @@ class RegimeController extends BaseController
 
         $pdf->Output('D', 'plan-regime-' . preg_replace('/[^a-z0-9]/i', '-', $sub['regime_nom']) . '.pdf');
         exit;
+    }
+        public function isNividy($id,$regime_id){
+            $db = \Config\Database::connect();
+            $query = $db->query('SELECT * FROM user_regimes WHERE user_id = ? AND regime_id = ? AND statut = "actif"', [$id, $regime_id]);
+            $result = $query->getRowArray();
+            if ($result) {
+                return true;
+            }
+        return false;
     }
 
     private function imcCategorie(float $imc): string
