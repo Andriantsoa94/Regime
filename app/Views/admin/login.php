@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion Admin | NutriPlan</title>
+    <title>Connexion Admin | Rezim</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -23,7 +23,7 @@
                 <div class="text-center mb-4">
                     <i class="bi bi-shield-lock-fill shield"></i>
                     <div style="font-size:1.5rem;font-weight:800;color:#6f2da8" class="mt-1">Administration</div>
-                    <p class="text-muted small mt-1">NutriPlan — Accès réservé</p>
+                    <p class="text-muted small mt-1">Rezim</p>
                 </div>
 
                 <?php if ($error = session()->getFlashdata('error')): ?>

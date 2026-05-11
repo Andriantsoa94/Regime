@@ -354,7 +354,7 @@
         <div class="container">
             <div class="card cta-card p-5 text-center">
                 <h2 class="fw-bold mb-3" style="color:#1a0a30">Prêt à transformer votre alimentation ?</h2>
-                <p class="text-muted mb-4 fs-5">Rejoignez NutriPlan et commencez votre parcours vers une meilleure santé dès aujourd'hui.</p>
+                <p class="text-muted mb-4 fs-5">Rejoignez Rezim et commencez votre parcours vers une meilleure santé dès aujourd'hui.</p>
                 <div class="d-flex justify-content-center gap-3 flex-wrap">
                     <a href="/register" class="btn btn-purple btn-lg px-5">
                         <i class="bi bi-person-plus me-2"></i>Créer mon compte
