@@ -4,6 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\Filters as BaseFilters;
 use App\Filters\AuthFilter;
+use App\Filters\AdminFilter;
 use App\Filters\RoleFilter;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\ForceHTTPS;
@@ -13,13 +14,14 @@ use CodeIgniter\Filters\PerformanceMetrics;
 class Filters extends BaseFilters
 {
     public array $aliases = [
-        'csrf'=> \CodeIgniter\Filters\CSRF::class,
-        'auth'=> AuthFilter::class,
-        'role' => RoleFilter::class,
-        'forcehttps' => ForceHTTPS::class,
-        'pagecache' => PageCache::class,
+        'csrf'        => \CodeIgniter\Filters\CSRF::class,
+        'auth'        => AuthFilter::class,
+        'admin'       => AdminFilter::class,
+        'role'        => RoleFilter::class,
+        'forcehttps'  => ForceHTTPS::class,
+        'pagecache'   => PageCache::class,
         'performance' => PerformanceMetrics::class,
-        'toolbar' => DebugToolbar::class,
+        'toolbar'     => DebugToolbar::class,
     ];
     public array $globals = [
         'before' => [
