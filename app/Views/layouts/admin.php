@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title ?? 'Admin') ?> | NutriPlan Admin</title>
+    <title><?= esc($title ?? 'Admin') ?> | Rezim Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="sidebar">
-    <div class="brand"><i class="bi bi-heart-pulse-fill me-2"></i>NutriPlan<div style="font-size:.68rem;opacity:.6;font-weight:400">Administration</div></div>
+    <div class="brand"><i class="bi bi-heart-pulse-fill me-2"></i>Rezim<div style="font-size:.68rem;opacity:.6;font-weight:400">Administration</div></div>
     <div class="nav-sect">Navigation</div>
     <a href="/admin/dashboard" class="<?= strpos(current_url(),'dashboard')!==false?'active':'' ?>"><i class="bi bi-speedometer2"></i>Tableau de bord</a>
     <div class="nav-sect">Gestion</div>
