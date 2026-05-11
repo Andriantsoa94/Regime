@@ -36,8 +36,8 @@
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Date de naissance</label>
                             <input type="date" name="date_naissance" class="form-control"
-                                   value="<?= esc($user['date_naissance'] ?? '') ?>"
-                                   max="<?= date('Y-m-d', strtotime('-10 years')) ?>">
+                                value="<?= esc($user['date_naissance'] ?? '') ?>"
+                                max="<?= date('Y-m-d', strtotime('-10 years')) ?>">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Objectif</label>
