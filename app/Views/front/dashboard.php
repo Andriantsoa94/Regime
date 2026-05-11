@@ -12,7 +12,7 @@
                         <span class="fs-2 fw-bold text-<?= $imcColor ?>"><?= $imc ?></span>
                         <small class="text-<?= $imcColor ?>">IMC</small>
                     </div>
-                    <span class="badge bg-<?= $imcColor ?> fs-6 px-3"><?= htmlspecialchars($imcCat) ?></span>
+                    <span class="badge bg-<?= $imcColor ?> fs-6 px-3"><?= esc($imcCat) ?></span>
                     <div class="row mt-3">
                         <div class="col-6 border-end">
                             <div class="text-muted small">Poids</div>
@@ -97,8 +97,8 @@
     <div class="col-md-6 col-lg-4">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="fw-bold"><?= htmlspecialchars($r['nom']) ?></h6>
-                <p class="text-muted small"><?= htmlspecialchars(substr($r['description'] ?? '', 0, 90)) ?>...</p>
+                <h6 class="fw-bold"><?= esc($r['nom']) ?></h6>
+                <p class="text-muted small"><?= esc(substr($r['description'] ?? '', 0, 90)) ?>...</p>
                 <div class="d-flex flex-wrap gap-1 mb-2">
                     <span class="badge bg-danger"><?= $r['pct_viande'] ?>% Viande</span>
                     <span class="badge bg-info"><?= $r['pct_poisson'] ?>% Poisson</span>
@@ -137,10 +137,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-1">
-                    <h6 class="fw-bold mb-0"><?= htmlspecialchars($a['nom']) ?></h6>
+                    <h6 class="fw-bold mb-0"><?= esc($a['nom']) ?></h6>
                     <span class="badge bg-<?= $ic[$a['intensite']]??'secondary' ?>"><?= ucfirst($a['intensite']) ?></span>
                 </div>
-                <p class="text-muted small mb-2"><?= htmlspecialchars($a['description']) ?></p>
+                <p class="text-muted small mb-2"><?= esc($a['description']) ?></p>
                 <div class="row text-center g-0">
                     <div class="col-4"><div class="small text-muted">Cal/h</div><div class="fw-bold text-danger"><?= $a['calories_par_heure'] ?></div></div>
                     <div class="col-4"><div class="small text-muted">Durée</div><div class="fw-bold"><?= $a['duree_recommandee'] ?> min</div></div>
