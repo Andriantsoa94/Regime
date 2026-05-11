@@ -1,34 +1,53 @@
 <?php
 
-use App\Controllers\AuthController;
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
+/** @var RouteCollection $routes */
+
+// ============================
+// ROUTES PUBLIQUES
+// ============================
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
 
-// -----------------routes d'authentification utilisateurs-----------------
+// Auth utilisateur
+$routes->get('/login',          'AuthController::index');
+$routes->post('/login',         'AuthController::login');
+$routes->post('/logout',        'AuthController::logout');
+$routes->get('/register',       'RegisterController::step1');
+$routes->post('/register',      'RegisterController::doStep1');
+$routes->get('/register/step2', 'RegisterController::step2');
+$routes->post('/register/step2','RegisterController::doStep2');
 
-$routes->get('/login', 'AuthController::index');
-$routes->post('/login', 'AuthController::login');
-$routes->get('/inscription', 'AuthController::register');
-$routes->post('/inscrire', 'AuthController::store');
-$routes->post('/logout', 'AuthController::logout');
+// Admin auth (public)
+$routes->get('/admin/login',    'Admin\AuthController::index');
+$routes->post('/admin/login',   'Admin\AuthController::login');
+$routes->get('/admin/logout',   'Admin\AuthController::logout');
 
-// -----------------routes ajoutees par Irina - aza misy manoratra ato aloha----------------------------------------------------------------
+// ============================
+// ROUTES FRONT OFFICE (filtre auth)
+// ============================
+$routes->get('/dashboard',              'Home::dashboard',      ['filter' => 'auth']);
+$routes->post('/dashboard/objectif',    'Home::setObjectif',    ['filter' => 'auth']);
 
-$routes->get('/profile', 'ProfileController::index', ['filter' => 'auth']);
-$routes->post('/profile/update', 'ProfileController::update', ['filter' => 'auth']);
+$routes->get('/profile',                'Profile::index',       ['filter' => 'auth']);
+$routes->post('/profile/update',        'Profile::update',      ['filter' => 'auth']);
 
-// -----------------------------------------------------------------------------------------------------------------------
+$routes->get('/sante',                  'SanteController::index', ['filter' => 'auth']);
+$routes->post('/sante',                 'SanteController::save',  ['filter' => 'auth']);
 
+$routes->get('/wallet',                 'WalletController::index',    ['filter' => 'auth']);
+$routes->post('/wallet/recharge',       'WalletController::recharge', ['filter' => 'auth']);
+$routes->post('/wallet/gold',           'WalletController::buyGold',  ['filter' => 'auth']);
 
-$routes->get('/sante', 'SanteController::index', ['filter' => 'auth']);
-$routes->post('/sante', 'SanteController::save', ['filter' => 'auth']);
+$routes->get('/regime/(:num)',          'RegimeController::detail/$1',    ['filter' => 'auth']);
+$routes->post('/regime/subscribe',      'RegimeController::subscribe',     ['filter' => 'auth']);
+$routes->get('/regime/(:num)/pdf',      'RegimeController::exportPdf/$1',  ['filter' => 'auth']);
+$routes->get('/mes-regimes',            'RegimeController::mesRegimes',    ['filter' => 'auth']);
 
-// ----------------- Routes admmin -----------------
+// ============================
+// ROUTES ADMIN (filtre admin)
+// ============================
 $routes->get('/admin',                              'Admin\DashboardController::index',       ['filter' => 'admin']);
 $routes->get('/admin/dashboard',                    'Admin\DashboardController::index',       ['filter' => 'admin']);
 
@@ -56,16 +75,3 @@ $routes->post('/admin/users/toggle-gold/(:num)',     'Admin\UsersController::tog
 
 $routes->get('/admin/parametres',                   'Admin\ParametresController::index',      ['filter' => 'admin']);
 $routes->post('/admin/parametres/update',           'Admin\ParametresController::update',     ['filter' => 'admin']);
-
-// ----------------- Routes front-office(regime et wallet) -----------------
-
-$routes->get('/wallet',                 'WalletController::index',    ['filter' => 'auth']);
-$routes->post('/wallet/recharge',       'WalletController::recharge', ['filter' => 'auth']);
-$routes->post('/wallet/gold',           'WalletController::buyGold',  ['filter' => 'auth']);
-
-$routes->get('/regime/(:num)',          'RegimeController::detail/$1',    ['filter' => 'auth']);
-$routes->post('/regime/subscribe',      'RegimeController::subscribe',     ['filter' => 'auth']);
-$routes->get('/regime/(:num)/pdf',      'RegimeController::exportPdf/$1',  ['filter' => 'auth']);
-$routes->get('/mes-regimes',            'RegimeController::mesRegimes',    ['filter' => 'auth']);
-
-$routes->get('/dashboard',              'Home::dashboard',      ['filter' => 'auth']);
